@@ -1,0 +1,37 @@
+@import "./style";
+.clear-fix {
+  display: inline-block;
+  &:after{
+    display: block;
+    content: ' ';
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden; // chrome浏览器bug不支持小于1px的元素
+  }
+}
+
+@media (min-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5) {
+  .border-1px {
+    &::after {
+      -webkit-transform: scaleY(0.7);
+      transform: scaleY(0.7);
+    }
+  }
+}
+@media (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2) {
+  .border-1px {
+    &::after {
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}
+@media (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+  .border-1px {
+    &::after {
+      -webkit-transform: scaleY(0.34);
+      transform: scaleY(0.34);
+    }
+  }
+}

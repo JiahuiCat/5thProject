@@ -1,0 +1,45 @@
+@mixin border-1px($color) {
+  position: relative;
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid $color;
+    content: ' ';
+  }
+}
+
+@mixin border-none(){
+  &:after {
+    display: none;
+  }
+}
+
+@mixin bg-img($url, $size) {
+  background: url($url + '@2x.png');
+  background-size: $size;
+  @media (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+    background: url($url + '@3x.png');
+    background-size: $size;
+  }
+}
+
+@mixin map-icon($url,$types,$size) {
+  &.decrease {
+    @include bg-img($url+"/decrease_"+$types, $size)
+  }
+  &.discount {
+    @include bg-img($url+"/discount_"+$types, $size)
+  }
+  &.special {
+    @include bg-img($url+"/special_"+$types, $size)
+  }
+  &.invoice {
+    @include bg-img($url+"/invoice_"+$types, $size)
+  }
+  &.guarantee {
+    @include bg-img($url+"/guarantee_"+$types, $size)
+  }
+}
+
